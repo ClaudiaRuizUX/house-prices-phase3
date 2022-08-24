@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 4) do
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
+  create_table "ownerships", force: :cascade do |t|
+    t.string "region_name"
+    t.integer "number_owners"
+    t.integer "percentage_owners"
+    t.integer "number_owners_with_mortgages"
+    t.integer "percentage_owners_with_mortgages"
+    t.datetime "date"
+  end
+
+  create_table "populations", force: :cascade do |t|
+    t.string "region_name"
+    t.integer "population"
+    t.datetime "date"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.string "government_reference"
+    t.float "price"
+    t.datetime "date"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "region_name"
+    t.string "government_reference"
   end
 
 end
