@@ -28,6 +28,7 @@ class CLI
         puts learnMore
         puts instructions
         puts indexHome
+        print " Your input: "
         input = gets.strip
 
         # switcher
@@ -54,18 +55,30 @@ class CLI
 
     def loadSectionOne
         # content one
-        intro = "#{@decorationOneLine} Prices in a Specific Location (5 Year Timeline)"
-        instructions = "Enter a Location Name or Number:"
+        intro = "
+        #{@decorationOneLine}Prices in a Specific Location (5 Year Timeline)"
+        instructions = "
+        Enter a Location Name or Number:
+        "
         @sectionOneContent = ["Australia", "NSW", "Victoria", "Queensland",
         "Western Australia", "Tasmania", "Northern Territory",
         "Australian Capital Territory"]
 
         # sectionOne
+        puts intro
+        puts instructions
         @sectionOneContent.each_with_index {|subject, index| puts "#{@decorationOneLine}#{index+1} #{subject}" }
     
         # switcher
+        print "
+        Your input: "
         input = gets.strip
         switcher(input, @sectionOneContent)
+    end
+
+    def loadSectionTwo
+        # content two
+    intro 
     end
     
     def switcher(input, sectionContent)
@@ -73,7 +86,8 @@ class CLI
             order = index+1
             case input.to_i
             when order, subject
-                puts "getSpecificLocation(#{order})"
+                puts "
+                getSpecificLocation(#{order})"
             end
         }   
     end
