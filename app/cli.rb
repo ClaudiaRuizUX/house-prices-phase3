@@ -6,14 +6,14 @@ class CLI
         @decorationTwoLines ="
         ******"
 
-        # sectionHome intro
+        # intro home
         welcome =  "#{@decorationTwoLines} Welcome to a House Prices App #{@decorationOneLine}"
         intro = "#{@decorationOneLine}As at 2021 Australia had a population of 25.6 million people 
         and nearly 9.8 million of households with a mean dwelling price of $856,000,000.
         "
         learnMore = "#{@decorationOneLine}Learn more about housing:"
 
-        # sectionHome index
+        # index home
         instructions = "
         Choose how to View Dwelling Prices & Population #{@decorationOneLine}"
         indexHome =  "
@@ -21,17 +21,15 @@ class CLI
         2 On All Locations in a Year
 
         (enter 1 or 2)
-        " 
-
-        # intro sectionHome
+        "
+        # sectionHome
         puts welcome
         puts intro
         puts learnMore
-
-        # index sectionHome
         puts instructions
         puts indexHome
         input = gets.strip
+
         # switcher
         if input == "1"
             loadSectionOne
@@ -55,44 +53,50 @@ class CLI
     end
 
     def loadSectionOne
-        # content
-        intro = "#{@decorationOneLine}Dwelling Prices and Population (5 Year)
-        In a Specific Location"
-        instructions = "Enter a Location Name or Number:
+        # content one
+        intro = "#{@decorationOneLine} Prices in a Specific Location (5 Year Timeline)"
+        instructions = "Enter a Location Name or Number:"
+        @sectionOneContent = ["Australia", "NSW", "Victoria", "Queensland",
+        "Western Australia", "Tasmania", "Northern Territory",
+        "Australian Capital Territory"]
 
-        1 Australia
-        2 NSW
-        3 Victoria
-        4 Queensland
-        5 Western Australia
-        6 Tasmania
-        7 Northern Territory
-        8 Australian Capital Territory
-        "
         # sectionOne
-        puts intro
-        puts instructions
-
-        
+        @sectionOneContent.each_with_index {|subject, index| puts "#{@decorationOneLine}#{index+1} #{subject}" }
+    
+        # switcher
+        input = gets.strip
+        switcher(input, @sectionOneContent)
     end
-
-
-
+    
+    def switcher(input, sectionContent)
+        sectionContent.each_with_index { |subject, index|
+            order = index+1
+            case input.to_i
+            when order, subject
+                puts "getSpecificLocation(#{order})"
+            end
+        }   
+    end
 end
 
-    # def getLocation
-    # end
 
-    # def getYear
-    # end
 
-    # def getPopulation
-    # end
 
-    # @ausYearSummary = ""
-    # @ausPopulationSummary = ""
-    # @ausPriceSummary = ""
 
+
+    def getSpecificLocation (order)
+
+    end
+
+    
+
+
+
+
+
+
+
+    
 # BUG TRACKING
     # error: if I want to type right after I type wrong, still quits
 
