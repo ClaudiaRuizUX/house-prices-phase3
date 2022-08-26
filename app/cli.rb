@@ -33,9 +33,9 @@ class CLI
 
         # switcher
         if input == "1"
-            loadSectionOne
+            loadSpecificLocation
         elsif input == "2"
-            puts "oookay"
+            puts "Data on All Locations Coming Soon"
         else
         # error 
             puts "please enter either 1 or 2 instead"
@@ -53,66 +53,71 @@ class CLI
         end
     end
 
-    def loadSectionOne
-        # content one
+    def loadSpecificLocation
+        # content specific location
         intro = "
         #{@decorationOneLine}Prices in a Specific Location (5 Year Timeline)"
         instructions = "
         Enter a Location Name or Number:
         "
-        @sectionOneContent = ["Australia", "NSW", "Victoria", "Queensland",
+        @specificLocationContent = ["Australia", "NSW", "Victoria", "Queensland",
         "Western Australia", "Tasmania", "Northern Territory",
         "Australian Capital Territory"]
 
-        # sectionOne
+        # specificLocation section
         puts intro
         puts instructions
-        @sectionOneContent.each_with_index {|subject, index| puts "#{@decorationOneLine}#{index+1} #{subject}" }
+        @specificLocationContent.each_with_index {|subject, index| puts "#{@decorationOneLine}#{index+1} #{subject}" }
     
         # switcher
         print "
         Your input: "
         input = gets.strip
-        switcher(input, @sectionOneContent)
-    end
-
-    def loadSectionTwo
-        # content two
-    intro 
+        switcher(input, @specificLocationContent)
     end
     
     def switcher(input, sectionContent)
         sectionContent.each_with_index { |subject, index|
             order = index+1
             case input.to_i
-            when order, subject
+            when 1..8, subject
                 puts "
-                getSpecificLocation(#{order})"
+                getSpecificLocation(#{order})
+                "
+            else
+                puts "we dont have it on the content"
+                getRegions
             end
+            # case operator
+            # when '+'
+            #     return Integer(firstNumber) + Integer(secondNumber)
+            # when '-'
+            #     return Integer(firstNumber) - Integer(secondNumber)
+            # when '*'
+            #     return Integer(firstNumber) * Integer(secondNumber)
+            # when '/'
+            #     return Integer(firstNumber) / Integer(secondNumber)
+            # end
         }   
+    end
+        
+    def getRegions
+        puts Region.count
     end
 end
 
+# def getSpecificLocation (order)
+# end
 
-
-
-
-
-    def getSpecificLocation (order)
-
-    end
-
-    
-
-
-
-
-
-
+# def loadSectionTwo
+#     # content two 
+# end
 
     
 # BUG TRACKING
-    # error: if I want to type right after I type wrong, still quits
+    # error: if I want to type right after I type wrong, still quits. 
+        # if I type something right and finish running it, it quits
+    # switcher section
 
 # TO DO
     # australiaSummary: PopulationTable: AusYear2021, PopulationNumber, MeanPrice

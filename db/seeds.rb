@@ -1,1 +1,1 @@
-Region.create!(name: "NSW")
+Region.create!(name: "NSW", reference:"0")

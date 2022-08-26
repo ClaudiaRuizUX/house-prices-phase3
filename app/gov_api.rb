@@ -2,27 +2,25 @@ require 'net/http'
 require 'open-uri'
 require 'json'
  
-class GetPrograms
+class GetRegions
 
-  URL = "http://data.cityofnewyork.us/resource/uvks-tn5n.json"
+  URL = "https://api.data.abs.gov.au/data/ABS,RES_DWELL_ST,1.0.0/5.8+7+6+5+4+3+2+1.Q?startPeriod=2018-Q1&endPeriod=2022-Q1&format=jsondata"
 
-  def get_programs
+  def get_regions
     uri = URI.parse(URL)
     response = Net::HTTP.get_response(uri)
     response.body
   end
 
-  def program_school
-    programs = JSON.parse(self.get_programs)
-    programs.collect do |program|
-      program["agency"]
-    end
+  def region_price
+    regions = JSON.parse(self.get_regions)
+    puts regions["data"]["dataSets"][0]["series"]["0:0:0"]
   end
 end
 
-# programs = GetPrograms.new
-# puts programs.program_school.uniq
+# regions = GetRegions.new
+# puts regions.region_price
 
-# programs = GetPrograms.new.get_programs
-# puts programs
-
+# regions = GetRegions.new.get_regions
+# puts regions
+#["data"]["dataSets"][0]["series"]["0:0:0"]
