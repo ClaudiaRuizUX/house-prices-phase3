@@ -73,51 +73,9 @@ class CLI
         print "
         Your input: "
         input = gets.strip
-        switcher(input, @specificLocationContent)
-    end
-    
-    def switcher(input, sectionContent)
-        sectionContent.each_with_index { |subject, index|
-            order = index+1
-            case input.to_i
-            when 1..8, subject
-                puts "
-                getSpecificLocation(#{order})
-                "
-            else
-                puts "we dont have it on the content"
-                getRegions
-            end
-            # case operator
-            # when '+'
-            #     return Integer(firstNumber) + Integer(secondNumber)
-            # when '-'
-            #     return Integer(firstNumber) - Integer(secondNumber)
-            # when '*'
-            #     return Integer(firstNumber) * Integer(secondNumber)
-            # when '/'
-            #     return Integer(firstNumber) / Integer(secondNumber)
-            # end
-        }   
-    end
-        
-    def getRegions
-        puts Region.count
+        # puts "entered #{input}"
+        selectedRegion = GetRegions.new
+        puts selectedRegion.region_price(input)
+        #switcher(input, @specificLocationContent)
     end
 end
-
-# def getSpecificLocation (order)
-# end
-
-# def loadSectionTwo
-#     # content two 
-# end
-
-    
-# BUG TRACKING
-    # error: if I want to type right after I type wrong, still quits. 
-        # if I type something right and finish running it, it quits
-    # switcher section
-
-# TO DO
-    # australiaSummary: PopulationTable: AusYear2021, PopulationNumber, MeanPrice
