@@ -1,10 +1,11 @@
 class CLI 
 
     def initialize
-        # global decoration
+        # global
         @decorationOneLine ="******  "
         @decorationTwoLines ="
         ******"
+        #@hello = Population.new(name: "meee")
 
         # intro home
         welcome =  "#{@decorationTwoLines} Welcome to a House Prices App #{@decorationOneLine}"
@@ -28,14 +29,13 @@ class CLI
         puts learnMore
         puts instructions
         puts indexHome
-        print " Your input: "
         input = gets.strip
 
         # switcher
         if input == "1"
             loadSpecificLocation
         elsif input == "2"
-            puts "Data on All Locations Coming Soon"
+            puts "working on it"        
         else
         # error 
             puts "please enter either 1 or 2 instead"
@@ -58,24 +58,48 @@ class CLI
         intro = "
         #{@decorationOneLine}Prices in a Specific Location (5 Year Timeline)"
         instructions = "
-        Enter a Location Name or Number:
+        (enter a Location Name or Number)
         "
-        @specificLocationContent = ["Australia", "NSW", "Victoria", "Queensland",
-        "Western Australia", "Tasmania", "Northern Territory",
-        "Australian Capital Territory"]
+        @specificLocationContent = ["Australian Capital Territory", "Northern Territory", "New South Wales",
+        "Queensland", "South Australia", "Tasmania", "Victoria", "Western Australia"]
+        subtitle = "Median Dwelling Prices & Population"
 
         # specificLocation section
         puts intro
+        @specificLocationContent.each_with_index {|subject, index| puts "#{@decorationOneLine} #{index+1} #{subject}" }
         puts instructions
-        @specificLocationContent.each_with_index {|subject, index| puts "#{@decorationOneLine}#{index+1} #{subject}" }
     
         # switcher
-        print "
-        Your input: "
         input = gets.strip
-        # puts "entered #{input}"
-        selectedRegion = GetRegions.new
-        puts selectedRegion.region_price(input)
-        #switcher(input, @specificLocationContent)
+        case input
+            when "1", "Australian Capital Territory", "ACT"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[0]}"
+                input = 4
+            when "2", "Northern Territory", "NT"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[1]}"
+                input = 2
+            when "3", "New South Wales", "NSW"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[2]}"
+                input = 0
+            when "4", "Queensland"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[3]}"
+                input = 7
+            when "5", "South Australia"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[4]}"
+                input = 3
+            when "6", "Tasmania"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[5]}"
+                input = 1
+            when "7", "Victoria"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[6]}"
+                input = 6
+            when "8", "Western Australia"
+                puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[7]}"
+                input = 5
+            else
+                puts "sorry we that location is not available, try some from the below"
+                @specificLocationContent.each_with_index {|subject, index| puts "#{@decorationOneLine} #{index+1} #{subject}" }
+        puts instructions
+        end
     end
 end

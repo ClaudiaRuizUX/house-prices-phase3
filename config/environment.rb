@@ -6,8 +6,6 @@ ActiveRecord::Base.establish_connection(
     :database => "db/development.sqlite3"
 )
 
-require_relative "../app/model/region"
 require_relative "../app/model/population"
-require_relative "../app/model/price"
 require_relative "../app/cli"
 require_relative "../app/gov_api"

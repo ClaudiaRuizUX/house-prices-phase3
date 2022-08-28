@@ -10,23 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 2) do
 
   create_table "populations", force: :cascade do |t|
-    t.string "region_name"
-    t.integer "population"
-    t.datetime "date"
-  end
-
-  create_table "prices", force: :cascade do |t|
-    t.string "government_reference"
-    t.float "price"
-    t.datetime "date"
-  end
-
-  create_table "regions", force: :cascade do |t|
-    t.string "region_name"
-    t.string "government_reference"
+    t.string "name"
   end
 
 end

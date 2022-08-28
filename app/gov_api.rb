@@ -14,13 +14,11 @@ class GetRegions
 
   def region_price (gov_reference)
     regions = JSON.parse(self.get_regions)
-    #puts regions["data"]["dataSets"][0]["series"]["0:#{gov_reference}:0"]["observations"]["0"][0]
     year_reference = 0
     year_label = 2018
     while year_reference <= 16
       regions_api = regions["data"]["dataSets"][0]["series"]["0:#{gov_reference}:0"]["observations"]["#{year_reference}"][0]
-      puts "#{year_label} - $#{regions_api} median price"
-      # puts year_label 
+      puts "#{year_label} - $#{regions_api} price" 
       year_reference = year_reference + 4
       year_label = year_label + 1
     end 
