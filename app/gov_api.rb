@@ -14,6 +14,7 @@ class GetRegions
 
   def region_price (gov_reference)
     regions = JSON.parse(self.get_regions)
+    #puts regions["data"]["dataSets"][0]["series"]["0:#{gov_reference}:0"]["observations"]["0"][0]
     year_reference = 0
     year_label = 2018
     while year_reference <= 16

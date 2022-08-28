@@ -1,11 +1,10 @@
 class CLI 
 
     def initialize
-        # global
+        # global decoration
         @decorationOneLine ="******  "
         @decorationTwoLines ="
         ******"
-        #@hello = Population.new(name: "meee")
 
         # intro home
         welcome =  "#{@decorationTwoLines} Welcome to a House Prices App #{@decorationOneLine}"
@@ -35,7 +34,7 @@ class CLI
         if input == "1"
             loadSpecificLocation
         elsif input == "2"
-            puts "working on it"        
+            puts "Data on All Locations Coming Soon"
         else
         # error 
             puts "please enter either 1 or 2 instead"
@@ -101,5 +100,8 @@ class CLI
                 @specificLocationContent.each_with_index {|subject, index| puts "#{@decorationOneLine} #{index+1} #{subject}" }
         puts instructions
         end
+        selectedRegion = GetRegions.new
+        puts selectedRegion.region_price(input)
     end
+
 end
