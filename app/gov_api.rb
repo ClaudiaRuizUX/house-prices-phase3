@@ -12,17 +12,29 @@ class GetRegions
     response.body
   end
 
-  def region_price (gov_reference)
+  def region_price (gov_reference, region_name)
     regions = JSON.parse(self.get_regions)
-    #puts regions["data"]["dataSets"][0]["series"]["0:#{gov_reference}:0"]["observations"]["0"][0]
+    
     year_reference = 0
     year_label = 2018
-    while year_reference <= 16
+
+    #populations = Population.find_by(date:"2018")
+    
+    #populations_by_year = populations.find_by(date:year_label)
+
+    while year_reference < 16
       regions_api = regions["data"]["dataSets"][0]["series"]["0:#{gov_reference}:0"]["observations"]["#{year_reference}"][0]
-      puts "#{year_label} - $#{regions_api} price" 
+      populations = Population.find_by(name: region_name)
+      puts populations.population
+      puts "   #{year_label} - $#{regions_api} price - #{populations.population} people" 
       year_reference = year_reference + 4
       year_label = year_label + 1
     end 
   end
 end
+
+
+# regionName = "ACT"
+                # test = Population.find_by(name: regionName)
+                # puts test.population
 

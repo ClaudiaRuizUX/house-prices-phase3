@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 2) do
 
   create_table "populations", force: :cascade do |t|
     t.string "name"
+    t.integer "population"
+    t.date "date"
   end
 
 end

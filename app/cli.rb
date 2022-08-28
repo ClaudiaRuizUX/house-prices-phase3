@@ -70,14 +70,20 @@ class CLI
     
         # switcher
         input = gets.strip
+        regionName = ""
         case input
             when "1", "Australian Capital Territory", "ACT"
+                regionName = "ACT"
+                # test = Population.find_by(name: regionName)
+                # puts test.population
                 puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[0]}"
                 input = 4
             when "2", "Northern Territory", "NT"
+                regionName = "Northern Territory"
                 puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[1]}"
                 input = 2
             when "3", "New South Wales", "NSW"
+                regionName = "New South Wales"
                 puts " #{@decorationOneLine} #{subtitle} in #{@specificLocationContent[2]}"
                 input = 0
             when "4", "Queensland"
@@ -101,7 +107,7 @@ class CLI
         puts instructions
         end
         selectedRegion = GetRegions.new
-        puts selectedRegion.region_price(input)
+        puts selectedRegion.region_price(input, regionName)
     end
 
 end
