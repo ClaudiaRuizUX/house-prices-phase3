@@ -44,6 +44,7 @@ GEM
       thread_safe (~> 0.1)
 
 PLATFORMS
+  -darwin-21
   universal-darwin-18
   x86_64-darwin-20
   x86_64-darwin-21
